@@ -27,6 +27,6 @@ if  [ ! $TRAVIS ] && [ ! -f $HOME/azdis_ssl/azdis_private.rsa ]; then
 fi
 
 if [ $TRAVIS ]; then
-  docker tag $CONTAINERNAME $REG_PASS $CONTAINERREGISTRY/$CONTAINERREPO
+  docker tag $CONTAINERNAME $CONTAINERREGISTRY/$CONTAINERREPO
   docker push $CONTAINERREGISTRY/$CONTAINERREPO
 fi
