@@ -26,8 +26,7 @@ if  [ ! $TRAVIS ] && [ ! -f $HOME/azdis_ssl/azdis_private.rsa ]; then
   openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
 fi
 
-if [ ! $TRAVIS ]; then
-  docker login -u $REG_USER -p $REG_PASS $CONTAINERREGISTRY
+if [ $TRAVIS ]; then
   docker tag $CONTAINERNAME $REG_PASS $CONTAINERREGISTRY/$CONTAINERREPO
   docker push $CONTAINERREGISTRY/$CONTAINERREPO
 fi

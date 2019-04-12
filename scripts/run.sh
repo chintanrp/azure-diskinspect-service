@@ -22,8 +22,7 @@ echo "Starting service..."
 docker create -v /etc/nginx/ssl --name $SERVICEVOLUMENAME ubuntu
 docker cp $SSL_PATH/. $SERVICEVOLUMENAME:/etc/nginx/ssl/.
 
-if [ ! $TRAVIS ]; then
-  docker login -u $REG_USER -p $REG_PASS $CONTAINERREGISTRY
+if [ $TRAVIS ]; then
   docker pull $CONTAINERREGISTRY/$CONTAINERREPO
   CONTAINERNAME=$CONTAINERREGISTRY/$CONTAINERREPO
   CONTAINERTAG="latest"
