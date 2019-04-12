@@ -10,7 +10,8 @@ install:
 jobs:
   include:
     - stage: build
-      install: docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
+      before_script: 
+        - docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
       script: travis_wait 60 ./build.sh ~/docker_build.txt
     - stage: deploy  
       install: 
