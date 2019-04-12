@@ -22,8 +22,7 @@ jobs:
       script: 
         - ./scripts/run.sh
         - docker ps | grep -q AzureDiskInspectSvc_US
-    - stage: test
-      script: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
+        - python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
     - after_failure:
       - ./tests/check_travis_env.sh
       - ./scripts/getlogs.sh
