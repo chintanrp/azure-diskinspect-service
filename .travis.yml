@@ -4,10 +4,10 @@ services:
 language: python
 python:
 - 3.5
-before_script: echo $REG_USER
 install:
+  - echo "$REG_USER"
   - pip3 install azure-storage-blob
-  - docker login -u $REG_USER -p $REG_PASS $CONTAINERREGISTRY
+  - docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
 # Setup stages for the build
 jobs:
   include:
